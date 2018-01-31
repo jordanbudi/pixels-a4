@@ -1,9 +1,16 @@
+var igUpload;
+
+function preload(){
+    igUpload = loadImage("rihanna.jpg")
+}
+
 function setup(){
     createCanvas(600, 400);
 }
 
 function draw(){
     background(0);
+    image(igUpload, 0, 0);
     loadPixels();
     
     for(var row=0; row<height; row++){
@@ -16,7 +23,7 @@ function draw(){
             a = pixels[index + 3];
             
             pixels[index] = col;
-            pixels[index + 1] = 0;
+            pixels[index + 1] = g;
             pixels[index + 2] = row;
             pixels[index + 3] = a;
         }
