@@ -5,7 +5,7 @@ function preload(){
 }
 
 function setup(){
-    createCanvas(600, 400);
+    createCanvas(igUpload.width, igUpload.height);
 }
 
 function draw(){
@@ -22,12 +22,36 @@ function draw(){
             b = pixels[index + 2];
             a = pixels[index + 3];
             
-            pixels[index] = col;
-            pixels[index + 1] = g;
-            pixels[index + 2] = row;
-            pixels[index + 3] = a;
+            if(keyIsPressed){
+                if(key=="r"){
+                    rainbow(index, col, row, g, a);
+                }
+                if(key=="1"){
+                    hotdog(index, g);
+                }
+                if(key=="2"){
+                    pixels[index] = 0;
+                    pixels[index + 1] = g;
+                    pixels[index + 2] = 0;
+                    pixels[index + 3] = a;
+                }                
+            }
         }
     }
     
     updatePixels();
+}
+
+function rainbow(index, col, row, g, a){
+    pixels[index] = col;
+    pixels[index + 1] = g;
+    pixels[index + 2] = row;
+    pixels[index + 3] = a;
+}
+
+function hotdog(index, g){
+    pixels[index] = g;
+    pixels[index + 1] = g;
+    pixels[index + 2] = g;
+    pixels[index + 3] = a;
 }
